@@ -54,7 +54,7 @@ angular.module('myApp.question', ['ngRoute'])
 .filter('formatText', function(){
     return function(text){
         if (text.indexOf("бляхамуха")!==-1) {
-            return "***Неведомый котэ***";
+            return "***МАТ ТРЕХЭТАЖНЫЙ***";
         }else{
             return text;
         }
