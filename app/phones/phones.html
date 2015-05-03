@@ -1,0 +1,12 @@
+<div ng-repeat="button in modes">
+	<label>
+		<input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes" />
+		{{button.label}}
+	</label>
+</div>
+<div ng-include="setFile()"></div>
+<div>
+	<p ng-show="data.visible">Первый блок</p>
+	<p ng-hide="data.visible">Второй блок</p>
+	<input type="checkbox" ng-model="data.visible">Показать\скрыть
+</div>
