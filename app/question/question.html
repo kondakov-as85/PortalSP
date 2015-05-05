@@ -1,3 +1,5 @@
+<button ng-click="load()">Загрузить</button>
+<div class="content" ng-show="loaded">
 <div class="quest" ng-class="questColorClass"
 	ng-mouseenter="changeClass($event)"
 	ng-mouseleave="changeClass($event)">
@@ -6,18 +8,7 @@
 </div>
 <p>Введите ответчика: <input type="text" ng-model="member"></p>
 <h3>Ответы</h3>
-<div class="answers">
-	<div ng-repeat="answer in question.answers | filter:{author:member} | orderBy:sortparam" class="answer">
-		<div class="vote">
-		    <a class="vote-up" ng-click="voteUp(answer)"></a>
-		    <span class="rate">{{answer.rate}}</span>
-		    <a class="vote-down" ng-click="voteDown(answer)"></a>
-		</div>
-		<b>{{answer.text | formatText}}</b>
-		<p>{{answer.author}}</p>
-		<p><i>{{answer.date}}</i></p>
-	</div>
-</div>
+<div answer-list="question"></div>
 <br>
 <div>
 	<select ng-model="answer.author">
@@ -43,5 +34,4 @@
 		<button type="submit" ng-click="save(answer, answerForm)">Сохранить</button>
 	</form>
 </div>
-<h3>Ответы из директивы</h3>
-<div answer-list="question"></div>
+</div>

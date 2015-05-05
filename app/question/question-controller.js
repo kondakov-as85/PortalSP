@@ -1,32 +1,15 @@
-angular.module('myApp.question').controller('QuestionController', function($scope) {
+angular.module('myApp.question').controller('QuestionController', function($scope, $http/*questionService*/) {
     $scope.sortparam='-rate';
-	$scope.question={
-        text: 'Какой js-фреймворк лучше использовать?',
-        author: 'Иван Иванов',
-        date: '20/10/2013',
-        answers: 
-        [{
-            text: 'AngularJS!',
-            author: 'Вова Сидоров',
-            date: '20/10/2014',
-            rate:2
-        },{
-            text: 'AngularJS лучше всех',
-            author: 'Олег Кузнецов',
-            date: '20/10/2015',
-            rate:0
-        },{
-            text: 'Я бы использовал knockout',
-            author: 'Неизвестный',
-            date: '21/10/2016',
-            rate:0
-        },{
-            text: 'бляхамуха',
-            author: 'Неизвестный',
-            date: '21/10/2016',
-            rate:0
-        }]
-    },
+	//$scope.question=questionService.question;
+    $scope.loaded = false;
+
+    $scope.load = function () {
+    $http.get('question.json').success(function(data) {
+            $scope.question = data.question;
+            $scope.loaded = true;
+        });
+        
+    }
      
     $scope.voteUp = function (answer){
         answer.rate++;
